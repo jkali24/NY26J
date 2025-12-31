@@ -23,7 +23,10 @@ let renderer = new THREE.WebGLRenderer({
     canvas: canvasEl,
     alpha: true,
 });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+const isMobile = window.innerWidth < 768;
+renderer.setPixelRatio(
+    isMobile ? Math.min(window.devicePixelRatio, 1.5) : Math.min(window.devicePixelRatio, 2)
+);
 let sceneShader = new THREE.Scene();
 let sceneBasic = new THREE.Scene();
 let camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 10);
@@ -62,13 +65,22 @@ canvasEl.addEventListener("click", (e) => {
     }
 });
 window.addEventListener("touchmove", (e) => {
+    if (!pointer.drawingAllowed) return;
+
+    e.preventDefault();
+
+    const touch = e.touches[0];
+    const x = touch.clientX / window.innerWidth;
+    const y = touch.clientY / window.innerHeight;
+
+    const dx = 10 * (x - pointer.x);
+    const dy = 10 * (y - pointer.y);
+
+    pointer.x = x;
+    pointer.y = y;
+    pointer.speed = Math.min(2, dx * dx + dy * dy);
     pointer.moved = true;
-    const dx = 5 * (e.targetTouches[0].pageX / window.innerWidth - pointer.x);
-    const dy = 5 * (e.targetTouches[0].pageY / window.innerHeight - pointer.y);
-    pointer.x = e.targetTouches[0].pageX / window.innerWidth;
-    pointer.y = e.targetTouches[0].pageY / window.innerHeight;
-    pointer.speed = Math.min(2, 20 * (Math.pow(dx, 2) + Math.pow(dy, 2)));
-});
+}, { passive: false });
 
 window.addEventListener("keydown", (e) => {
     if (e.key === " ") {
