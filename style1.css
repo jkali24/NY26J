@@ -79,21 +79,20 @@ canvas {
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
     .clean-btn {
         bottom: 40px;
         left: 50%;
         right: auto;
-        transform: translateX(-50%);
 
-        font-size: 35px;
-        padding: 18px 28px;
-        border-radius: 40px;
+        transform: translateX(-50%);
+        font-size: 20px;
+        padding: 20px 32px;
+        border-radius: 45px;
     }
 
     .clean-btn:active {
         transform: translateX(-50%) scale(0.95);
     }
 }
-
 
