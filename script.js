@@ -98,9 +98,41 @@ const canvas = document.getElementById("canvas");
 
         if (!mostrado) {
             mensajeSecreto.classList.remove("visible");
+            claveBox.classList.remove("visible");
+            cartaBtn.classList.remove("visible");
         }
     });
 
+    const cartaBtn = document.getElementById("cartaBtn");
+    const claveBox = document.getElementById("claveBox");
+
     egg.addEventListener("click", () => {
-        mensajeSecreto.classList.toggle("visible");
+    const visible = mensajeSecreto.classList.toggle("visible");
+    cartaBtn.classList.toggle("visible", visible);
+
+    if (!visible) {
+        claveBox.classList.remove("visible");
+    }
     });
+
+    cartaBtn.addEventListener("click", () => {
+    claveBox.classList.toggle("visible");
+    });
+
+    // Validar clave
+    claveEnviar.addEventListener("click", () => {
+        if (claveInput.value === "2026") {
+            window.location.href = "Flores.html";
+        } else {
+            claveInput.value = "";
+            claveInput.placeholder = "Clave incorrecta";
+        }
+    });
+
+    // Enter también valida
+    claveInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            claveEnviar.click();
+        }
+    });
+
