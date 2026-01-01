@@ -34,13 +34,12 @@ html, body {
     cursor: pointer;
     user-select: none;
     text-shadow: 0 1px 2px rgba(0,0,0,.4);
-    transition: all 0.25s ease;
+    transition: transform 0.25s ease, background 0.25s ease;
     box-shadow: 0 8px 25px rgba(0,0,0,.3);
     -webkit-tap-highlight-color: transparent;
 }
 
 .clean-btn:hover {
-    background: rgba(255, 255, 255, 0.25);
     transform: translateY(-2px);
 }
 
@@ -91,5 +90,10 @@ canvas {
         padding: 18px 28px;
         border-radius: 40px;
     }
+
+    .clean-btn:active {
+        transform: translateX(-50%) scale(0.95);
+    }
 }
+
 
