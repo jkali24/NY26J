@@ -79,7 +79,7 @@ canvas {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 450px) {
     .clean-btn {
         bottom: 40px;
         left: 50%;
