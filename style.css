@@ -214,3 +214,40 @@ html, body {
         border: none;
         cursor: pointer;
     }
+
+#mensajePrevio {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(10, 10, 30, 0.95);
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    padding: 30px;
+
+    font-size: 1.2rem;
+    line-height: 1.6;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.6s ease;
+    z-index: 20;
+}
+
+#mensajePrevio.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#mensajePrevio span {
+    display: block;
+    margin-top: 20px;
+    font-size: 0.95rem;
+    opacity: 0.8;
+    font-style: italic;
+}
