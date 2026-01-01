@@ -122,7 +122,20 @@ const canvas = document.getElementById("canvas");
     // Validar clave
     claveEnviar.addEventListener("click", () => {
         if (claveInput.value === "2026") {
-            window.location.href = "Flowers.html";
+            modalClave.classList.remove("visible");
+            
+            const mensajePrevio = document.getElementById("mensajePrevio");
+            mensajePrevio.classList.add("visible");
+        
+            // Redirigir después de 4 segundos
+            setTimeout(() => {
+                window.location.href = "Flowers.html";
+            }, 10000);
+            
+        mensajePrevio.addEventListener("click", () => {
+            window.location.href = "Flores.html";
+        });    
+            
         } else {
             claveInput.value = "";
             claveInput.placeholder = "Clave incorrecta";
@@ -135,5 +148,6 @@ const canvas = document.getElementById("canvas");
             claveEnviar.click();
         }
     });
+
 
 
