@@ -122,7 +122,7 @@ const canvas = document.getElementById("canvas");
     // Validar clave
     claveEnviar.addEventListener("click", () => {
         if (claveInput.value === "2026") {
-            window.location.href = "Flores.html";
+            window.location.href = "Flowers.html";
         } else {
             claveInput.value = "";
             claveInput.placeholder = "Clave incorrecta";
@@ -135,4 +135,5 @@ const canvas = document.getElementById("canvas");
             claveEnviar.click();
         }
     });
+
 
